@@ -1,0 +1,5 @@
+menuconfig DRIVERS_ASP5033_CAN
+	bool "asp5033_can"
+	default n
+	---help---
+		Enable support for asp5033_can
