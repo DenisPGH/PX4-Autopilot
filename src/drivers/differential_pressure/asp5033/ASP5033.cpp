@@ -202,7 +202,7 @@ int ASP5033::collect()
 	// k is a shift based on the pressure range of the device. See
 	// table in the datasheet
 	constexpr uint8_t k = 8;
-	constexpr float press_scale = 1.0f / (1U << k); //= 1.0f / (1U << k);
+	constexpr float press_scale = 1.0f / (1U << k);
 	press_sum += press * press_scale;
 	press_count++;
 

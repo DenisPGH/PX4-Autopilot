@@ -68,7 +68,7 @@
 
 
 /* Configuration Constants */
-static constexpr uint8_t I2C_ADDRESS_DEFAULT = 0x6D; /* 0x6D 0xE4 */
+static constexpr uint8_t I2C_ADDRESS_DEFAULT = 0x6d; /* 0x6D 0xE4 */
 static constexpr uint32_t I2C_SPEED = 100 * 1000; // 100 kHz I2C serial interface
 
 
