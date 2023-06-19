@@ -35,6 +35,7 @@
 #pragma once
 
 #include <nuttx/can/can.h>
+#include <perf/perf_counter.h>
 
 #include <lib/perf/perf_counter.h>
 #include <px4_platform_common/log.h>
@@ -78,6 +79,12 @@ public:
 	int start();
 
 	int16_t receive(CanFrame *received_frame);
+	int16_t transmit();
+
+	/// Also sets up the message structures required for socketcanTransmit & socketcanReceive
+	/// can_fd determines to use CAN FD frame when is 1, and classical CAN frame when is 0
+	/// The return value is 0 on succes and -1 on error
+	int init();
 
 private:
 	static constexpr uint32_t SAMPLE_RATE{100}; // samples per second (10ms)
@@ -90,4 +97,5 @@ private:
 
 	uORB::Publication<differential_pressure_s> _differential_pressure_pub{ORB_ID(differential_pressure)};
 	perf_counter_t _comms_errors{perf_alloc(PC_COUNT, MODULE_NAME": communication errors")};
+	perf_counter_t _perf_elapsed{};
 };
